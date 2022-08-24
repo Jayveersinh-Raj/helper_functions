@@ -2,6 +2,14 @@
 ### Storing them here so they're easily accessible.
 
 import tensorflow as tf
+import pandas as pd
+
+# A function to read and shuffle given a filename, fraction (should be between 0-1 representing %), and random_state
+def preprocess_data(filename, fraction, rand_state):
+  train = pd.read_csv(filename)
+  shuffled_train = data_train.sample(frac = fraction, random_state = rand_state) # frac = 1 means 100% of the data shuffle
+  return train, shuffled_train
+
 
 # Create a function to import an image and resize it to be able to be used with our model
 def load_and_prep_image(filename, img_shape=224, scale=True):
